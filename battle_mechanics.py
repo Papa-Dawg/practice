@@ -80,16 +80,16 @@ def attack(character, enemy, difficulty): #Initiates a battle to the death betwe
 
 my_acrobat = Acrobat(name = 'Nathan', age = 33, sex = 'male', height = 180)
 
-my_brawler = Brawler(name = 'Nathan', age = 33, sex = 'male', height = 180)
+my_brawler = Brawler(name = 'Joseph', age = 35, sex = 'male', height = 183)
 
-my_academic = Academic(name = 'Nathan', age = 33, sex = 'male', height = 180)
+my_academic = Academic(name = 'Samuel', age = 37, sex = 'male', height = 180)
 
-my_socialite = Socialite(name = 'Nathan', age = 33, sex = 'male', height = 180)
+my_socialite = Socialite(name = 'Jeromy', age = 31, sex = 'male', height = 178)
 
-my_elder = Elder(name = 'Nathan', age = 33, sex = 'male', height = 180)
+my_elder = Elder(name = 'Coles', age = 31, sex = 'male', height = 178)
 
 my_fortunate = Fortunate(name = 'Zach', age = 33, sex = 'male', height = 178)
 
 enemy = Orc(name = 'Bork')
 
-attack(my_brawler, enemy, 15)
+attack(my_fortunate, enemy, 15)

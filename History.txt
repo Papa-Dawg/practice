@@ -1,1 +1,1 @@
-This file is for the intro text that is to be displayed to the user when they begin the game.
+This file is for displaying the history of the world in the game prior to the user's arrival.

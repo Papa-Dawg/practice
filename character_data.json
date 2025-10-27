@@ -1,15 +1,80 @@
 {
     "Nathan": {
         "name": "Nathan",
-        "health": 90,
-        "weapon": "brass knuckles",
+        "health": 0,
+        "weapon": "bowstaff",
         "age": 33,
         "sex": "male",
         "height": 180,
+        "phys": 9,
+        "inte": 3,
+        "soc": 4,
+        "luck": 6,
+        "wis": 3
+    },
+    "Joseph": {
+        "name": "Joseph",
+        "health": 49,
+        "weapon": "brass knuckles",
+        "age": 35,
+        "sex": "male",
+        "height": 183,
         "phys": 7,
         "inte": 5,
         "soc": 5,
         "luck": 4,
         "wis": 4
+    },
+    "Zach": {
+        "name": "Zach",
+        "health": 64,
+        "weapon": "surroundings",
+        "age": 33,
+        "sex": "male",
+        "height": 178,
+        "phys": 2,
+        "inte": 4,
+        "soc": 7,
+        "luck": 9,
+        "wis": 3
+    },
+    "Samuel": {
+        "name": "Samuel",
+        "health": 31,
+        "weapon": "bow and arrow",
+        "age": 37,
+        "sex": "male",
+        "height": 180,
+        "phys": 3,
+        "inte": 9,
+        "soc": 2,
+        "luck": 5,
+        "wis": 6
+    },
+    "Jeromy": {
+        "name": "Jeromy",
+        "health": 100,
+        "weapon": "rapier",
+        "age": 31,
+        "sex": "male",
+        "height": 178,
+        "phys": 5,
+        "inte": 5,
+        "soc": 9,
+        "luck": 5,
+        "wis": 1
+    },
+    "Coles": {
+        "name": "Coles",
+        "health": 52,
+        "weapon": "pistol",
+        "age": 31,
+        "sex": "male",
+        "height": 178,
+        "phys": 1,
+        "inte": 7,
+        "soc": 5,
+        "luck": 3,
+        "wis": 9
     }
 }

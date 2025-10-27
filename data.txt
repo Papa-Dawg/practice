@@ -1,2 +1,6 @@
-Nathan,90
-Zach,28
+Nathan,0
+Zach,64
+Joseph,49
+Samuel,31
+Jeromy,100
+Coles,52

@@ -48,47 +48,6 @@ def save_character_health(character):
         print(Fore.RED + f"Error, could not save: {e}")
 
 
-def save_character(character):
-
-    all_character_data = {}    
-    character_info = {
-        'name': character.name,
-        'health': character.health,
-        'weapon': character.weapon,
-        'age': character.age,
-        'sex': character.sex,
-        'height': character.height,
-        'phys': character.phys,
-        'inte': character.inte,
-        'soc': character.soc,
-        'luck': character.luck,
-        'wis': character.wis
-    }
-    all_character_data[character.name] = character_info
-
-    try:
-        with open(JSON_DATA_FILE, 'w') as f:
-            json.dump(all_character_data, f, indent=4)
-            print(Fore.GREEN + Style.BRIGHT + f"\n{character.name}" + Fore.GREEN + "'s stats have been saved to JSON file.")
-    except Exception as e:
-        print(Fore.RED + f"Error, could not save character to JSON file: {e}")
-
-    try:
-        with open(DATA_FILE, 'rb') as f:
-            all_character_data = pickle.load(f)
-    except FileNotFoundError:
-        all_character_data = {}
-    except EOFError:
-        all_character_data = {}
-
-    try:
-        with open(DATA_FILE, 'wb') as f:
-            pickle.dump(all_character_data, f)
-            print(Fore.GREEN + Style.BRIGHT + f"\n{character.name}" + Fore.GREEN + "'s stats have been saved.")
-    except Exception as e:
-        print(Fore.RED + f"Error, could not save character: {e}")
-
-
 def load_character(character):
 
     character_data = {}
@@ -113,3 +72,45 @@ def load_character(character):
     except Exception as e:
         print(Fore.RED + f"Error, could not load character: {e}")
 
+
+def load_all_character_data():
+    
+    try:
+        with open(JSON_DATA_FILE, 'r') as f:
+            return json.load(f)
+    except (FileNotFoundError, EOFError):
+        return {}
+
+def save_character(character):
+    
+    all_character_data = load_all_character_data()
+
+    character_info = {
+        'name': character.name,
+        'health': character.health,
+        'weapon': character.weapon,
+        'age': character.age,
+        'sex': character.sex,
+        'height': character.height,
+        'phys': character.phys,
+        'inte': character.inte,
+        'soc': character.soc,
+        'luck': character.luck,
+        'wis': character.wis
+    }
+    
+    all_character_data[character.name] = character_info
+
+    try:
+        with open(JSON_DATA_FILE, 'w') as f:
+            json.dump(all_character_data, f, indent=4)
+            print(Fore.GREEN + Style.BRIGHT + f"\n{character.name}" + Fore.GREEN + "'s stats have been saved to JSON file.")
+    except Exception as e:
+        print(Fore.RED + f"Error, could not save character to JSON file: {e}")
+
+    try:
+        with open(DATA_FILE, 'wb') as f:
+            pickle.dump(all_character_data, f) 
+            print(Fore.GREEN + Style.BRIGHT + f"\n{character.name}" + Fore.GREEN + "'s stats have been saved.")
+    except Exception as e:
+        print(Fore.RED + f"Error, could not save character: {e}")
