@@ -1,0 +1,15 @@
+{
+    "Nathan": {
+        "name": "Nathan",
+        "health": 0,
+        "weapon": "bowstaff",
+        "age": 33,
+        "sex": "male",
+        "height": 180,
+        "phys": 9,
+        "inte": 3,
+        "soc": 4,
+        "luck": 6,
+        "wis": 3
+    }
+}
