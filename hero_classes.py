@@ -1,6 +1,7 @@
+##This file contains the hero classes, which the user can choose from.
 
 class Acrobat:
-
+    #These stats are inherent to the class.
     weapon = 'bowstaff'
     health = 100
     phys = 9
@@ -9,6 +10,7 @@ class Acrobat:
     luck = 6
     wis = 3
 
+    #These stats are set when an object of the class is first initiated, like Zach the Fortunate.
     def __init__(self, name, age, sex, height):
         self.name = name
         self.age = age

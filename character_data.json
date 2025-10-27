@@ -1,15 +1,15 @@
 {
     "Nathan": {
         "name": "Nathan",
-        "health": 0,
-        "weapon": "bowstaff",
+        "health": 90,
+        "weapon": "brass knuckles",
         "age": 33,
         "sex": "male",
         "height": 180,
-        "phys": 9,
-        "inte": 3,
-        "soc": 4,
-        "luck": 6,
-        "wis": 3
+        "phys": 7,
+        "inte": 5,
+        "soc": 5,
+        "luck": 4,
+        "wis": 4
     }
 }

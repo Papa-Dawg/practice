@@ -1,3 +1,5 @@
+## This file just handles how the character data is saved.
+## The data is updated to a file when saved, and can be updated from that file when loaded.
 
 import json
 import pickle

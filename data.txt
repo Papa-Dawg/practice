@@ -1,1 +1,2 @@
-Nathan,0
+Nathan,90
+Zach,28

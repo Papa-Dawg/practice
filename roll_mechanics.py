@@ -24,7 +24,8 @@ def damage_roll(die, num):
     damage_roll = dice_roll(die, num)
     for roll in damage_roll:
         damage += roll
-        return damage
+    
+    return damage
 
 
 def insight_check(character, difficulty):
@@ -49,17 +50,18 @@ def weapon_damage(character):
     if character.weapon == 'bowstaff':
         damage = damage_roll(10, 2)
         return damage
-    elif character.weapon == 'brass_knuckles':
+    elif character.weapon == 'brass knuckles':
         damage = damage_roll(6, 4)
         return damage
-    elif character.weapon == 'bow_and_arrow':
+    elif character.weapon == 'bow and arrow':
         damage = damage_roll(20, 1)
         return damage
     elif character.weapon == 'rapier':
         damage = damage_roll(12, 2)
         return damage
     elif character.weapon == 'surroundings':
-        damage = damage_roll(12, random.randit())
+        luck = random.randint(1, 4)
+        damage = damage_roll(12, luck)
         return damage
     elif character.weapon == 'pistol':
         damage = damage_roll(40, 1)
