@@ -1,0 +1,16 @@
+#another template file for storing game data. I'm leaning towards using this format for most of the game data.
+
+# --- World Settings ---
+game_title: "Aethelgard Chronicles"
+difficulty: 2
+
+# --- Character Defaults ---
+starting_stats:
+  health: 100
+  phys: 10
+  luck: 5
+
+# --- Item List ---
+starting_items:
+  - dagger
+  - rope

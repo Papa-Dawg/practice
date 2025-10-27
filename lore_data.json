@@ -1,0 +1,28 @@
+{
+  "__comment__": "These are just random elements to give a sense of the things to add here",
+  "Regions": {
+    "Aethelgard": {
+      "climate": "temperate",
+      "ruler": "King Valerius",
+      "description": "A land of dense forests and rolling hills, known for its strong warrior tradition.",
+      "threats": ["Bandits", "Fey creatures"]
+    },
+    "The Obsidian Wastes": {
+      "climate": "arid",
+      "ruler": "None (Anarchy)",
+      "description": "A scorched wasteland left over from the Great War. Dangerous mutated beasts roam here."
+    }
+  },
+  "Gods": {
+    "Luminos": {
+      "domain": "Sun, Justice, Law",
+      "symbol": "Golden Scale",
+      "alignment": "Lawful Good"
+    },
+    "Nox": {
+      "domain": "Shadows, Secrets, Chaos",
+      "symbol": "Black Serpent",
+      "alignment": "Chaotic Neutral"
+    }
+  }
+}
