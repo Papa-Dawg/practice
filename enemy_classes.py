@@ -10,6 +10,8 @@ class Orc:
     luck = 3
     wis = 3
 
+    flee = 50 #Out of 100. Higher number = Harder to flee.
+
     #These stats below are chosen when created an object of a certain class, like Bork the Orc. More will be added, I'm sure.
     def __init__(self, name):
         self.name = name
