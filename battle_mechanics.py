@@ -121,19 +121,19 @@ def attack(character, enemy, difficulty): #Initiates a battle to the death betwe
 
 
     if enemy.health > 0 and not fled: #What happens after the battle is over, and the hero died (enemy not dead).
-        print("\n*** The battle is over, and " + Fore.RED + Style.BRIGHT + f"{enemy.name}" + Fore.RESET + " has emerged victorious! ***")
+        print("\n*** The battle is over, and " + Fore.RED + Style.BRIGHT + f"{enemy.name}" + Fore.RESET + " has emerged victorious! ***\n")
         save_character_health(character)
         save_character(character)
         return character.health
     
     if character.health > 0 and not fled: #What happens after the battle is over, and the enemy died (character not dead).
-        print("\n*** The battle is over, and " + Fore.GREEN + Style.BRIGHT + f"{character.name}" + Fore.RESET + " has emerged victorious! ***")
+        print("\n*** The battle is over, and " + Fore.GREEN + Style.BRIGHT + f"{character.name}" + Fore.RESET + " has emerged victorious! ***\n")
         save_character_health(character)
         save_character(character)
         return character.health
     
     if fled:
-        print(Fore.CYAN + f"\n*** {character.name} has successfully escaped the battle! ***")
+        print(Fore.CYAN + f"\n*** {character.name} has successfully escaped the battle! ***\n")
     
 
 my_acrobat = Acrobat(name = 'Nathan', age = 33, sex = 'male', height = 180) #These are just for testing the attack() function.
