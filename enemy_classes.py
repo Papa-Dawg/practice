@@ -10,7 +10,9 @@ class Orc:
     luck = 3
     wis = 3
 
+    difficulty = 13 #Out of 20? Works like the armor stat in DnD.
     flee = 50 #Out of 100. Higher number = Harder to flee.
+    mental = 80 #Out of 100. Higher number = Harder to confuse.
 
     #These stats below are chosen when created an object of a certain class, like Bork the Orc. More will be added, I'm sure.
     def __init__(self, name):

@@ -1,5 +1,5 @@
 Nathan,0
-Zach,72
+Zach,36
 Joseph,49
 Samuel,31
 Jeromy,100
