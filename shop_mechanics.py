@@ -2,7 +2,7 @@
 
 from colorama import Fore, Style, init
 
-from NPC_classes import Shopkeeper
+from character_classes import Shopkeeper
 
 init(autoreset=True)
 

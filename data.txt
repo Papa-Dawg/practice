@@ -1,6 +1,0 @@
-Nathan,0
-Zach,36
-Joseph,49
-Samuel,31
-Jeromy,100
-Coles,52

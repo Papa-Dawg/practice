@@ -1,16 +1,106 @@
 ## This file handles the battle mechanics.
 
+import random
+
 #Allows me to create different colored text output.
 from colorama import Fore, Style, init
 
 #Imports functions and classes from other files to use in the functions in this file.
-from hero_classes import Acrobat, Fortunate, Brawler, Academic, Socialite, Elder
-from enemy_classes import Orc
-from roll_mechanics import dice_roll, weapon_damage
-from modifiers import roll_add, damage_modifier, social_add
-from data_save import save_character_health, save_character
+from character_classes import Acrobat, Fortunate, Brawler, Academic, Socialite, Elder, Orc
+from data_save import save_character
 
 init(autoreset=True) #Resets the color I add after every printed line. It would color everything after, otherwise.
+
+
+############################################################# Modifiers ###################################################################
+
+def damage_modifier(phys):
+    modifier = int(1 + (phys / 10)) #Makes the modifier 1.(whatever-phys-stat). So for the Acrobat, it would be 1.9. Which is prolly too high, idk.
+    return modifier
+
+
+def roll_add(luck): #Gives a bonus to rolls based on the character's luck, which is divided by 3, with the decimal part truncated.
+    add = luck // 3
+    return add
+
+
+def insight_add(inte): #Insight bonus based on intelligence.
+    add = inte
+    return add
+
+def social_add(soc): #Dialogue option bonus based on social stat.
+    add = soc
+    return add
+
+def choice_add(wis): #Trynna think of how to make it work that the wisdom stat can benefit decision making.
+    add = wis
+    return add
+
+
+############################################################# Basic Roll Logic ###################################################################
+
+
+def dice_roll(die, number):
+
+    rolls = []
+
+    for roll in range(number):
+        roll = random.randint(1, die)
+        rolls.append(roll)
+    
+    return rolls
+
+
+def damage_roll(die, num):
+    damage = 0
+    damage_roll = dice_roll(die, num)
+    for roll in damage_roll:
+        damage += roll
+    
+    return damage
+
+
+def insight_check(character, difficulty):
+
+    rolls = dice_roll(die = 20, number = 1)
+    for roll in rolls:
+        roll = int(roll)
+    roll_bonus = roll_add(character.luck)
+    insight_bonus = insight_add(character.inte)
+    total = roll + roll_bonus + insight_bonus
+
+    if total >= difficulty:
+        print(f"*** {character.name} succeeds! ***")
+        return True
+    else:
+        print(f"*** {character.name} fails! ***")
+        return False
+    
+
+############################################################# Battle Mechanics ###################################################################
+    
+
+def weapon_damage(character):
+
+    if character.weapon == 'bowstaff':
+        damage = damage_roll(10, 2)
+        return damage
+    elif character.weapon == 'brass knuckles':
+        damage = damage_roll(6, 4)
+        return damage
+    elif character.weapon == 'bow and arrow':
+        damage = damage_roll(20, 1)
+        return damage
+    elif character.weapon == 'rapier':
+        damage = damage_roll(12, 2)
+        return damage
+    elif character.weapon == 'surroundings':
+        luck = random.randint(1, 4)
+        damage = damage_roll(12, luck)
+        return damage
+    elif character.weapon == 'pistol':
+        damage = damage_roll(40, 1)
+        return damage
 
 
 def attack_choice(character, enemy): #Gives choice between actions on what to do next.
@@ -72,6 +162,47 @@ def flee(character, enemy): #Code for flee attempt
         return True
     else:
         return False
+    
+
+def resolve_attack_attempt(character, enemy, roll_result, roll_bonus, damage_bonus, difficulty):
+    """Processes a single attack roll (d20) and returns the game state updates."""
+
+    attack_attempt = roll_result + roll_bonus
+    critical = (roll_result == 20)
+    
+    # 1. PLAYER HITS (Regular or Critical)
+    if attack_attempt >= difficulty:
+        
+        # Calculate damage (simplified for this example)
+        base_damage = weapon_damage(character) 
+        multiplier = 2 if critical else 1
+        damage = base_damage * damage_bonus * multiplier
+        
+        # Apply damage
+        enemy.health -= damage
+        
+        if critical:
+            message = f"{character.name} critically hits {enemy.name} for {damage} damage!"
+        else:
+            message = f"{character.name}'s attack hits {enemy.name} for {damage} damage!"
+            
+        return "MONSTER_TURN", message # Returns the next phase and the message
+
+    # 2. PLAYER MISSES (Enemy retaliates immediately)
+    else:
+        # Enemy's Counter Attack Logic (using your original enemy damage roll)
+        enemy_damage_roll = dice_roll(die=8, number=2)
+        enemy_damage = sum(enemy_damage_roll)
+        
+        character.health -= enemy_damage
+        
+        message = (
+            f"{character.name}'s attack fails! | "
+            f"{enemy.name} hits {character.name} for {enemy_damage} damage!"
+        )
+        
+        return "PLAYER_TURN", message # Enemy retaliated, so it's the player's turn again
+
 
 def attack(character, enemy, difficulty): #Initiates a battle to the death between the character and the enemy. Difficulty determined by enemy stat.
 
@@ -180,13 +311,11 @@ def attack(character, enemy, difficulty): #Initiates a battle to the death betwe
 
     if enemy.health > 0 and not fled: #What happens after the battle is over, and the hero died (enemy not dead).
         print("\n*** The battle is over, and " + Fore.RED + Style.BRIGHT + f"{enemy.name}" + Fore.RESET + " has emerged victorious! ***\n")
-        save_character_health(character)
         save_character(character)
         return character.health
     
     if character.health > 0 and not fled: #What happens after the battle is over, and the enemy died (character not dead).
         print("\n*** The battle is over, and " + Fore.GREEN + Style.BRIGHT + f"{character.name}" + Fore.RESET + " has emerged victorious! ***\n")
-        save_character_health(character)
         save_character(character)
         return character.health
     
@@ -208,7 +337,7 @@ my_fortunate = Fortunate(name = 'Zach', age = 33, sex = 'male', height = 178)
 
 enemy = Orc(name = 'Bork')
 
-attack(my_fortunate, enemy, enemy.difficulty)
+#attack(my_fortunate, enemy, enemy.difficulty)
 
 #attack_choice(my_acrobat, enemy)
 
